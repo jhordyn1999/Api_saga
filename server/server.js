@@ -30,7 +30,7 @@ app.use(require('./routes/ambientes'));
 app.use(require('./routes/permisos'));
 app.use(require('./routes/incidentes'));
 app.use(require('./routes/usuario'));
-app.use(require('./routes/tiponcidente'));
+app.use(require('./routes/tipoincidente'));
 
 
 /*=====  End of Rutas  ======*/
