@@ -8,7 +8,8 @@ const mysqlConnection = require('../config/database');
  
 
 router.get('/incidentes', (req,res) => {
-    mysqlConnection.query('SELECT * FROM incidentes', (err, rows, fields) =>{
+    const query=`CALL pa_mostrar_incidente;`;
+    mysqlConnection.query(query, (err, rows, fields) =>{
         
        
         if(!err) {
