@@ -10,10 +10,11 @@ const mysqlConnection = require('../config/database');
 router.get('/ambientes', (req,res) => {
     mysqlConnection.query('SELECT * FROM ambientes', (err, rows, fields) =>{
         
-        let ambientes = {};
+        let ambiente = {};
+
         if(!err) {
-            ambientes['ambientes'] = rows[0];
-            res.json(ambientes);
+            ambiente['ambiente'] = rows[0];
+            res.json(ambiente);
         } else {
             console.log(err);
             
