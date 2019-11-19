@@ -26,11 +26,11 @@ app.use(cors());
 
 
 app.use(require('./routes/empleado'));
-app.use(require('./routes/ambientes'));
 app.use(require('./routes/permisos'));
 app.use(require('./routes/incidentes'));
 app.use(require('./routes/usuario'));
 app.use(require('./routes/tipoincidente'));
+app.use(require('./routes/ambientes'));
 
 
 /*=====  End of Rutas  ======*/

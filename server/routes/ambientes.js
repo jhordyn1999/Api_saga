@@ -19,6 +19,20 @@ router.get('/ambientes', (req,res) => {
         }
     })
 })
+router.get('/ambientes/:im', (req,res) => {
+    const { im } = req.params;
+    mysqlConnection.query('SELECT * FROM ambientes WHERE idAmbientes = ?', [im], (err,rows,fields) => {
+        if(!err) {
+            res.json(rows[0]);
+        } else {
+            console.log(im+"algo");
+            
+            
+            
+        }
+    });
+    
+});
 
 
 

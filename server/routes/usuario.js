@@ -12,10 +12,13 @@ router.get('/usuario', (req,res) => {
         CALL pa_user_permisos;
     `;
     mysqlConnection.query(query, (err, rows, fields) =>{
+
+        let usuarios = {};
         
-        console.log(res.status(200));
+        
         if(!err) {
-            res.json(rows[0]);
+            usuarios['usuarios'] = rows[0];
+            res.json(usuarios);
             
              
         } else {
