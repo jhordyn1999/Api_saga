@@ -13,7 +13,7 @@ router.get('/ambientes', (req,res) => {
         let ambiente = {};
 
         if(!err) {
-            ambiente['ambiente'] = rows[0];
+            ambiente['ambiente'] = rows;
             res.json(ambiente);
         } else {
             console.log(err);
