@@ -30,15 +30,15 @@ router.get('/usuario', (req,res) => {
 
 router.post('/usuario/modificarpermiso', (req,res) => {
        
-        let permiso=req.body.permiso;
-        let id_usuario=req.body.id_usuario;
+        let sub_nivel_permisos=req.body.sub_nivel_permisos;
+        let idUsuario=req.body.idUsuario;
 
         let respuesta={};
 
-    mysqlConnection.query('CALL pa_registrar_permiso_user(?,?)', [permiso,id_usuario])
+    mysqlConnection.query('CALL pa_registrar_permiso_user(?,?)', [sub_nivel_permisos,idUsuario])
     .then(rows=>{
         
-            respueesta['respuesta']=rows;
+            respuesta['respuesta']=rows;
             res.json(respuesta);
         
     }).catch(err =>{
