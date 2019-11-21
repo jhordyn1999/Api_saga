@@ -21,5 +21,19 @@ router.get('/permisos', (req,res) => {
     });
 });
 
+router.get('/subpermisos', (req,res) => {
+    mysqlConnection.query('SELECT * FROM sub_permisos', (err, rows, fields) =>{
+        
+        let Subpermisos={};
+        if(!err) {
+            Subpermisos['SubPermisos']=rows;
+            res.json(Subpermisos);
+        } else {
+            console.log(err);
+            
+        }
+    });
+});
+
 
 module.exports = router;
