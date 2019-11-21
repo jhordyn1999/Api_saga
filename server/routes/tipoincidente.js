@@ -10,9 +10,10 @@ const mysqlConnection = require('../config/database');
 router.get('/tipoincidente', (req,res) => {
     mysqlConnection.query('SELECT * FROM tipo_incidente', (err, rows, fields) =>{
         
-        
+        let tipoincidente={};
         if(!err) {
-            res.json(rows);
+            tipoincidente[TipoIncidente]=rows;
+            res.json(tipoincidente);
         } else {
             console.log(err);
             

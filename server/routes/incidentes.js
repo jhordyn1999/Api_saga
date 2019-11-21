@@ -26,5 +26,4 @@ router.get('/incidentes', (req,res) => {
 
 
 
-
 module.exports = router;
