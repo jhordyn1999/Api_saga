@@ -12,7 +12,7 @@ router.get('/tipoincidente', (req,res) => {
         
         let tipoincidente={};
         if(!err) {
-            tipoincidente[TipoIncidente]=rows;
+            tipoincidente['TipoIncidente']=rows;
             res.json(tipoincidente);
         } else {
             console.log(err);
