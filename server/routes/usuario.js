@@ -28,6 +28,23 @@ router.get('/usuario', (req,res) => {
     })
 })
 
+router.post('/usuario/modificarpermiso', (req,res) => {
+        let id_usuario=req.body.id_usuario;
+        let permiso=req.body.permiso;
+
+        let respuesta={};
+
+    mysqlConnection.query('CALL pa_registrar_permiso_user(?,?)', [id_usuario,permiso])
+    .then(rows=>{
+        
+            respueesta['respuesta']=rows;
+            res.json(respuesta);
+        
+    }).catch(err =>{
+        console.log(err);
+    });
+});
+
 
 
 
