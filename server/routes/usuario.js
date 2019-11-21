@@ -28,7 +28,7 @@ router.get('/usuario', (req,res) => {
     })
 })
 
-router.post('/usuario/modificarpermiso', (req,res) => {
+router.put('/usuario/modificarpermiso', (req,res) => {
 
     const {sub_nivel_permisos, idUsuario} = req.body;
     let respuesta={};
