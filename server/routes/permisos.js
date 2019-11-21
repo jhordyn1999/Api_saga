@@ -10,9 +10,10 @@ const mysqlConnection = require('../config/database');
 router.get('/permisos', (req,res) => {
     mysqlConnection.query('SELECT * FROM permisos', (err, rows, fields) =>{
         
-        
+        let permisos={};
         if(!err) {
-            res.json(rows);
+            permisos['Permisos']=rows;
+            res.json(permisos);
         } else {
             console.log(err);
             
