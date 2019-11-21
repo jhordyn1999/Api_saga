@@ -29,22 +29,22 @@ router.get('/usuario', (req,res) => {
 })
 
 router.post('/usuario/modificarpermiso', (req,res) => {
-       
-        let sub_nivel_permisos=req.body.sub_nivel_permisos;
-        let idUsuario=req.body.idUsuario;
 
-        let respuesta={};
-
-    mysqlConnection.query('CALL pa_registrar_permiso_user(?,?)', [sub_nivel_permisos,idUsuario])
-    .then(rows=>{
-        
-            respuesta['respuesta']=rows;
+    const {sub_nivel_permisos, idUsuario} = req.body;
+    let respuesta={};
+    const query = `
+    CALL pa_registrar_permiso_user(?,?);
+    `;
+    mysqlConnection.query(query,[sub_nivel_permisos,idUsuario],(err,rows,fields) => {
+        if(!err) {
+            respuesta['respuesta']=rows[0];
             res.json(respuesta);
-        
-    }).catch(err =>{
-        console.log(err);
-    });
-});
+        } else {
+            console.log(err);
+            
+        }
+    })
+})
 
 
 
