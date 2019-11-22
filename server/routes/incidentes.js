@@ -23,6 +23,24 @@ router.get('/incidentes', (req,res) => {
     })
 })
 
+router.put('/incidente/registrarincidente', (req,res) => {
+
+    const {sub_nivel_permisos, idUsuario} = req.body;
+    let respuesta={};
+    const query = `
+    CALL pa_registrar_incidencia(?,?);
+    `;
+    mysqlConnection.query(query,[sub_nivel_permisos,idUsuario],(err,rows,fields) => {
+        if(!err) {
+            respuesta['respuesta']=rows[0];
+            res.json(respuesta);
+        } else {
+            console.log(err);
+            
+        }
+    })
+})
+
 
 
 
