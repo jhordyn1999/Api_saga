@@ -46,6 +46,25 @@ router.put('/usuario/modificarpermiso', (req,res) => {
     })
 })
 
+router.post('/usuario/insertarusuario', (req,res) => {
+
+    const {uss,pasw,idemp,idperm,idsub} = req.body;
+    let respuesta={};
+    const query = `
+    CALL pa_InsertarUsuario(?,?,?,?,?);
+    `;
+    mysqlConnection.query(query,[uss,pasw,idemp,idperm,idsub],(err,rows,fields) => {
+        if(!err) {
+            respuesta['respuesta']=rows[0];
+            res.json(respuesta);
+        } else {
+            console.log(err);
+            
+        }
+    })
+})
+
+
 
 
 
