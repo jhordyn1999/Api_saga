@@ -64,6 +64,23 @@ router.post('/usuario/insertarusuario', (req,res) => {
     })
 })
 
+router.post('/usuario/verificarLogin', (req,res) => {
+
+    const {usuario,contraseña} = req.body;
+    let respuesta={};
+    const query = `
+    CALL pa_verificarLogin(?,?);
+    `;
+    mysqlConnection.query(query,[usuario,contraseña],(err,rows,fields) => {
+        if(!err) {
+            respuesta['respuesta']=rows[0];
+            res.json(respuesta);
+        } else {
+            console.log(err);
+            
+        }
+    })
+})
 
 
 
