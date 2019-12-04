@@ -4,6 +4,9 @@
 
 require('./config/config');
 const express = require ('express');
+ 
+ 
+  
 var cors = require('cors');
 const app = express();
 /*=====  End of Configuracion  ======*/
@@ -14,6 +17,8 @@ const app = express();
 =============================================*/
 
 app.use(express.json());
+
+app.use(express.urlencoded({extended:false}))
 app.use(cors());
 
 /*=====  End of MIDDLEWARES  ======*/
