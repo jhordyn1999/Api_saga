@@ -19,7 +19,7 @@ router.get('/usuario', (req,res) => {
         
         
         if(!err) {
-            respuesta['Response:OK', 'StatusCode:200'];
+            usuarios['respuesta'] = {'true' : 1};
             usuarios['usuarios'] = rows[0];
             res.json(usuarios);
             
