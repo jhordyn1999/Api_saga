@@ -12,11 +12,14 @@ router.get('/usuario', (req,res) => {
         CALL pa_user_permisos;
     `;
     mysqlConnection.query(query, (err, rows, fields) =>{
+            
+        let respuesta={};
 
         let usuarios = {};
         
         
         if(!err) {
+            respuesta['Response:OK', 'StatusCode:200'];
             usuarios['usuarios'] = rows[0];
             res.json(usuarios);
             
@@ -68,11 +71,13 @@ router.post('/usuario/verificarLogin', (req,res) => {
 
     const {usuario,contraseña} = req.body;
     let respuesta={};
+    let respuesta2={}
     const query = `
     CALL pa_verificarLogin(?,?);
     `;
     mysqlConnection.query(query,[usuario,contraseña],(err,rows,fields) => {
         if(!err) {
+            respuesta2['Response:OK', 'StatusCode:200'];
             respuesta['respuesta']=rows[0];
             res.json(respuesta);
         } else {
