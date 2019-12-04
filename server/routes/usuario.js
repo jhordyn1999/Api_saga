@@ -80,7 +80,9 @@ router.post('/usuario/verificarLogin', (req,res) => {
           //  respuesta['respuesta']=rows[0];
             res.json(respuesta);
         } else {
+            respuesta['Respuesta'] = {'Response' : 'NO','StatusCode':400};
             console.log(err);
+
             
         }
     })
