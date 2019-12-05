@@ -35,5 +35,32 @@ router.get('/subpermisos', (req,res) => {
     });
 });
 
+router.post('/permiso/verificarPermiso', (req,res) => {
+
+    const {permiso,subpermiso} = req.body;
+    let respuesta={};
+    const query = `
+    CALL pa_verificarPermiso(?,?);
+    `;
+    mysqlConnection.query(query,[permiso,subpermiso],(err,rows,fields) => {
+        if(!err) {
+            respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':200};
+            respuesta['respuesta']=rows[0];
+            console.log(respuesta["respuesta"][0]["valor"]);
+            if(respuesta["respuesta"][0]["valor"] == 0){
+                console.log("algo");
+                res.status(500);
+            } 
+            
+            res.json(respuesta);
+        } else {
+           // respuesta['Respuesta'] = {'Response' : 'NO','StatusCode':400};
+            console.log(err);
+
+            
+        }
+    })
+})
+
 
 module.exports = router;
