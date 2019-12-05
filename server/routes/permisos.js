@@ -37,12 +37,12 @@ router.get('/subpermisos', (req,res) => {
 
 router.post('/permiso/verificarPermiso', (req,res) => {
 
-    const {permiso,subpermiso} = req.body;
+    const {permiso,subpermiso,iduser} = req.body;
     let respuesta={};
     const query = `
-    CALL pa_verificarPermiso(?,?);
+    CALL pa_verificarPermiso(?,?,?);
     `;
-    mysqlConnection.query(query,[permiso,subpermiso],(err,rows,fields) => {
+    mysqlConnection.query(query,[permiso,subpermiso,iduser],(err,rows,fields) => {
         if(!err) {
             respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':200};
             respuesta['respuesta']=rows[0];
