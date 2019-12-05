@@ -36,6 +36,7 @@ app.use(require('./routes/incidentes'));
 app.use(require('./routes/usuario'));
 app.use(require('./routes/tipoincidente'));
 app.use(require('./routes/ambientes'));
+app.use(require('./routes/temperatura'));
 
 
 /*=====  End of Rutas  ======*/
