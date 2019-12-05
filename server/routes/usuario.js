@@ -78,6 +78,12 @@ router.post('/usuario/verificarLogin', (req,res) => {
         if(!err) {
         //    respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':1};
             respuesta['respuesta']=rows[0];
+            console.log(respuesta["respuesta"][0]["valor"]);
+            if(respuesta["respuesta"][0]["valor"] == 0){
+                console.log("algo");
+                res.status(500);
+            } 
+            
             res.json(respuesta);
         } else {
            // respuesta['Respuesta'] = {'Response' : 'NO','StatusCode':400};
