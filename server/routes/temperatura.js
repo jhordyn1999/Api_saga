@@ -5,7 +5,19 @@ const router = express.Router();
 const mysqlConnection = require('../config/database');
 
 
- 
+
+router.get('/temperatura', (req,res) => {
+    mysqlConnection.query('SELECT * FROM temperatura', (err, rows, fields) =>{
+        
+        
+        if(!err) {
+            res.json(rows);
+        } else {
+            console.log(err);
+            
+        }
+    });
+});
 
 router.post('/temperatura/InsertarTemperatura', (req,res) => {
 
