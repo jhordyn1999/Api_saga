@@ -76,7 +76,7 @@ router.post('/usuario/verificarLogin', (req,res) => {
     `;
     mysqlConnection.query(query,[usuario,contraseña],(err,rows,fields) => {
         if(!err) {
-        //    respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':1};
+            respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':200};
             respuesta['respuesta']=rows[0];
             console.log(respuesta["respuesta"][0]["valor"]);
             if(respuesta["respuesta"][0]["valor"] == 0){
