@@ -40,14 +40,14 @@ router.post('/acceso/insertarAcceso', (req,res) => {
     });
 });
 
-router.post('/acceso/ultimoAcceso', (req,res) => {
+router.get('/acceso/ultimoAcceso', (req,res) => {
 
-    const {iduser} = req.body;
+   // const {iduser} = req.body;
     let respuesta={};
     const query = `
-    CALL pa_ultimoAcceso(?);
+    CALL pa_ultimoAcceso();
     `;
-    mysqlConnection.query(query,[iduser],(err,rows,fields) => {
+    mysqlConnection.query(query,(err,rows,fields) => {
         if(!err) {
         //    respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':1};
             respuesta['respuesta']=rows[0];
