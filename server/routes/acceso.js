@@ -45,7 +45,7 @@ router.post('/acceso/ultimoAcceso', (req,res) => {
     const {iduser} = req.body;
     let respuesta={};
     const query = `
-    CALL pa_ultimoAcceso(?,?);
+    CALL pa_ultimoAcceso(?);
     `;
     mysqlConnection.query(query,[iduser],(err,rows,fields) => {
         if(!err) {
