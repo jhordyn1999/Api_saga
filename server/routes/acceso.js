@@ -39,6 +39,26 @@ router.post('/acceso/insertarAcceso', (req,res) => {
         }
     });
 });
+router.post('/acceso/cerrarAcceso', (req,res) => {
+
+    const {accesoid} = req.body;
+    let respuesta={};
+    const query = `
+    CALL pa_cerrarAcceso(?);
+    `;
+    mysqlConnection.query(query,[accesoid],(err,rows,fields) => {
+        if(!err) {
+        //    respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':1};
+            respuesta['respuesta']=rows[0];
+            res.json(respuesta);
+        } else {
+           // respuesta['Respuesta'] = {'Response' : 'NO','StatusCode':400};
+            console.log(err);
+
+            
+        }
+    });
+});
 
 router.get('/acceso/ultimoAcceso', (req,res) => {
 
