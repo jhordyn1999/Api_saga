@@ -37,6 +37,26 @@ router.post('/temperatura/InsertarTemperatura', (req,res) => {
 
             
         }
+    });
+});
+router.post('/temperatura/ultimaTemperatura', (req,res) => {
+
+   // const {temp} = req.body;
+    let respuesta={};
+    const query = `
+    CALL pa_ultimaTemperatura();
+    `;
+    mysqlConnection.query(query,(err,rows,fields) => {
+        if(!err) {
+        //    respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':1};
+            respuesta['respuesta']=rows[0];
+            res.json(respuesta);
+        } else {
+           // respuesta['Respuesta'] = {'Response' : 'NO','StatusCode':400};
+            console.log(err);
+
+            
+        }
     })
 })
 
