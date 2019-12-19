@@ -41,6 +41,7 @@ router.post('/iluminacion/InsertarIluminacion', (req,res) => {
 });
 router.get('/iluminacion/ultimaIluminacion', (req,res) => {
 
+
     let respuesta={};
     const query = `
     CALL pa_ultimaIluminacion();
