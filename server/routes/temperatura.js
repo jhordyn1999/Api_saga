@@ -39,7 +39,7 @@ router.post('/temperatura/InsertarTemperatura', (req,res) => {
         }
     });
 });
-router.post('/temperatura/ultimaTemperatura', (req,res) => {
+router.get('/temperatura/ultimaTemperatura', (req,res) => {
 
     let respuesta={};
     const query = `
