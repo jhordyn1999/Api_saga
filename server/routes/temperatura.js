@@ -56,8 +56,8 @@ router.post('/temperatura/ultimaTemperatura', (req,res) => {
 
             
         }
-    })
-})
+    });
+});
 
 
 
