@@ -116,6 +116,26 @@ router.post('/iluminacion/InsertarIluminacion', (req,res) => {
         }
     });
 });
+router.post('/iluminacion/apagarIluminacion', (req,res) => {
+
+    const {_area} = req.body;
+    let respuesta={};
+    const query = `
+    CALL pa_apagarIluminacion(?);
+    `;
+    mysqlConnection.query(query,[_area],(err,rows,fields) => {
+        if(!err) {
+        //    respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':1};
+            respuesta['respuesta']=rows[0];
+            res.json(respuesta);
+        } else {
+           // respuesta['Respuesta'] = {'Response' : 'NO','StatusCode':400};
+            console.log(err);
+
+            
+        }
+    });
+});
 router.get('/iluminacion/ultimaIluminacion', (req,res) => {
 
 
