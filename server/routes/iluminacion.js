@@ -21,12 +21,12 @@ router.get('/iluminacion', (req,res) => {
 
 router.post('/iluminacion/InsertarIluminacion', (req,res) => {
 
-    const {area} = req.body;
+    const {_area} = req.body;
     let respuesta={};
     const query = `
     CALL pa_insertarIluminacion(?);
     `;
-    mysqlConnection.query(query,[area],(err,rows,fields) => {
+    mysqlConnection.query(query,[_area],(err,rows,fields) => {
         if(!err) {
         //    respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':1};
             respuesta['respuesta']=rows[0];
