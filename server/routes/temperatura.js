@@ -41,7 +41,6 @@ router.post('/temperatura/InsertarTemperatura', (req,res) => {
 });
 router.post('/temperatura/ultimaTemperatura', (req,res) => {
 
-   // const {temp} = req.body;
     let respuesta={};
     const query = `
     CALL pa_ultimaTemperatura();
