@@ -96,14 +96,14 @@ router.get('/iluminacion', (req,res) => {
     });
 });
 
-router.post('/iluminacion/InsertarIluminacion', (req,res) => {
+router.post('/iluminacion/insertarIluminacion', (req,res) => {
 
-    const {_area} = req.body;
+    const {areainsert} = req.body;
     let respuesta={};
     const query = `
     CALL pa_insertarIluminacion(?);
     `;
-    mysqlConnection.query(query,[_area],(err,rows,fields) => {
+    mysqlConnection.query(query,[areainsert],(err,rows,fields) => {
         if(!err) {
         //    respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':1};
             respuesta['respuesta']=rows[0];
