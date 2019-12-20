@@ -156,4 +156,24 @@ router.get('/iluminacion/ultimaIluminacion', (req,res) => {
         }
     });
 });
+router.get('/iluminacion/ultimoApagado', (req,res) => {
+
+
+    let respuesta={};
+    const query = `
+    CALL pa_ultimoApagado();
+    `;
+    mysqlConnection.query(query,(err,rows,fields) => {
+        if(!err) {
+        //    respuesta['Respuesta'] = {'Response' : 'OK','StatusCode':1};
+            respuesta['respuesta']=rows[0];
+            res.json(respuesta);
+        } else {
+           // respuesta['Respuesta'] = {'Response' : 'NO','StatusCode':400};
+            console.log(err);
+
+            
+        }
+    });
+});
 module.exports = router;
